@@ -91,7 +91,7 @@ class SportsWalking(Training):
                  action,
                  duration,
                  weight,
-                 height: int
+                 height: float
                  ) -> None:
         super().__init__(action, duration, weight)
         self.height = height
