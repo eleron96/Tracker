@@ -259,7 +259,7 @@ def test_Swimming_get_spent_calories(input_data, expected):
     assert hasattr(swimming, 'get_spent_calories'), (
         'Создайте метод `get_spent_calories` в классе `Swimming`.'
     )
-    result = swimming.get_spent_calories
+    result = swimming.get_spent_calories()
     assert type(result) == float, (
         'Метод `get_spent_calories` класса `Swimming` '
         'должен возвращать значение типа `float`'
@@ -297,7 +297,7 @@ def test_SportsWalking_get_spent_calories(input_data, expected):
     assert hasattr(sports_walking, 'get_spent_calories'), (
         'Создайте метод `get_spent_calories` в классе `SportsWalking`.'
     )
-    result = sports_walking.get_spent_calories
+    result = sports_walking.get_spent_calories()
     assert type(result) == float, (
         'Метод `get_spent_calories`класса `SportsWalking` '
         'должен возвращать значение типа`float`'

@@ -72,8 +72,9 @@ class Running(Training):
 
     def get_spent_calories(self) -> float:
         av_speed = self.get_mean_speed()
+
         return (((self.coeff_calorie_1 * av_speed - self.coeff_calorie_2)
-                 * self.weight) / (self.M_IN_KM * self.duration))
+                 * self.weight / self.M_IN_KM * (self.duration * 60)))
 
     def get_type(self) -> str:
         print("Running.get_type")
