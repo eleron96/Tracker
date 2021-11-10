@@ -43,7 +43,7 @@ class Training:
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        pass
+        return self.action * self.LEN_STEP / self.M_IN_KM
 
     def get_mean_speed(self) -> float:
         """Получить среднюю скорость движения."""
@@ -65,6 +65,7 @@ class Training:
 
 class Running(Training):
     """Тренировка: бег."""
+    LEN_STEP: float = 0.65
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
@@ -72,7 +73,6 @@ class Running(Training):
 
     def get_spent_calories(self) -> float:
         av_speed = self.get_mean_speed()
-
         return (((self.coeff_calorie_1 * av_speed - self.coeff_calorie_2)
                  * self.weight / self.M_IN_KM * (self.duration * 60)))
 
@@ -84,9 +84,9 @@ class Running(Training):
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     LEN_STEP: float = 0.65
-    coeff_calorie_SportsWalking_1: float = 0.035
-    coeff_calorie_SportsWalking_2: int = 2
-    coeff_calorie_SportsWalking_3: float = 0.029
+    coeff_calorie_sportswalking_1: float = 0.035
+    coeff_calorie_sportswalking_2: int = 2
+    coeff_calorie_sportswalking_3: float = 0.029
 
     def __init__(self,
                  action,
@@ -102,9 +102,9 @@ class SportsWalking(Training):
         return self.action * self.LEN_STEP / self.M_IN_KM
 
     def get_spent_calories(self) -> float:
-        return ((self.coeff_calorie_SportsWalking_1 * self.weight
-                 + (self.get_mean_speed() ** self.coeff_calorie_SportsWalking_2
-                    // self.height) * self.coeff_calorie_SportsWalking_3
+        return ((self.coeff_calorie_sportswalking_1 * self.weight
+                 + (self.get_mean_speed() ** self.coeff_calorie_sportswalking_2
+                    // self.height) * self.coeff_calorie_sportswalking_3
                  * self.weight) * self.duration) * 60
 
 
@@ -142,6 +142,7 @@ def read_package(workout_type: str, data: list) -> Training:
         return Running(data[0], data[1], data[2])
     if workout_type == 'WLK':
         return SportsWalking(data[0], data[1], data[2], data[3])
+    assert False
 
 
 def main(training: Training) -> None:
