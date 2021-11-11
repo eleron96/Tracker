@@ -75,7 +75,9 @@ class Running(Training):
     def get_spent_calories(self) -> float:
         av_speed = self.get_mean_speed()
         return (((self.COEFF_CALORIE_1 * av_speed - self.COEFF_CALORIE_2)
-                 * self.weight / self.M_IN_KM * (self.duration_h * self.M_IN_HOUR)))
+                 * self.weight / self.M_IN_KM *
+                 (self.duration_h * self.M_IN_HOUR)))
+
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
@@ -130,16 +132,17 @@ class Swimming(Training):
         return ((self.get_mean_speed() + self.COEFF_CALORIE_3)
                 * self.COEFF_CALORIE_4 * self.weight)
 
+
 TRANING_TYPE_DICT = {
-    'SWM':Swimming,
-    'RUN':Running,
-    'WLK':SportsWalking
+    'SWM': Swimming,
+    'RUN': Running,
+    'WLK': SportsWalking
 }
 
-def read_package(workout_type: str, data: list) -> Training:
-    training_type = TRANING_TYPE_DICT [workout_type]
-    return training_type(*data)
 
+def read_package(workout_type: str, data: list) -> Training:
+    training_type = TRANING_TYPE_DICT[workout_type]
+    return training_type(*data)
 
 
 def main(training: Training) -> None:
