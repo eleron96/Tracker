@@ -130,14 +130,14 @@ class Swimming(Training):
         return ((self.get_mean_speed() + self.COEFF_CALORIE_3)
                 * self.COEFF_CALORIE_4 * self.weight)
 
-traning_type_dict = {
+TRANING_TYPE_DICT = {
     'SWM':Swimming,
     'RUN':Running,
     'WLK':SportsWalking
 }
 
 def read_package(workout_type: str, data: list) -> Training:
-    training_type = traning_type_dict [workout_type]
+    training_type = TRANING_TYPE_DICT [workout_type]
     return training_type(*data)
 
 
