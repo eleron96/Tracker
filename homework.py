@@ -133,7 +133,7 @@ class Swimming(Training):
                 * self.COEFF_CALORIE_4 * self.weight)
 
 
-TRANING_TYPE_DICT = {
+TRAINING_TYPE_DICT = {
     'SWM': Swimming,
     'RUN': Running,
     'WLK': SportsWalking
@@ -141,7 +141,7 @@ TRANING_TYPE_DICT = {
 
 
 def read_package(workout_type: str, data: list) -> Training:
-    training_type = TRANING_TYPE_DICT[workout_type]
+    training_type = TRAINING_TYPE_DICT[workout_type]
     return training_type(*data)
 
 
